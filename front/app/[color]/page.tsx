@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import fetchServicios from "../utils/fecthServicios"; // Ajusta la ruta según sea necesario
-import fetchColors from "../utils/fetchColors"; // Para obtener los colores
+import fetchServicios from "../utils/fecthServicios";
+import fetchColors from "../utils/fetchColors";
 import ServiceCard from "../components/ServiceCard";
 import "../globals.css";
 
@@ -20,27 +20,25 @@ interface Color {
 
 interface ColorPageProps {
   params: {
-    color: string; // Esto será el nombre del color, como "amarillo"
+    color: string;
   };
 }
 
 export default function ColorPage({ params }: ColorPageProps) {
-  const { color: colorName } = params; // Obtén el nombre del color
+  const { color: colorName } = params;
 
   const [servicios, setServicios] = useState<Servicio[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [colorData, setColorData] = useState<Color | null>(null); // Para almacenar el color con ID y hex
+  const [colorData, setColorData] = useState<Color | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         console.log("Fetching colors...");
 
-        // Primero obtenemos todos los colores
         const colorsData = await fetchColors();
         console.log("Colors fetched:", colorsData);
 
-        // Ajustamos para trabajar directamente con el array, no con colorsData.data
         const selectedColor = colorsData.find(
           (c: Color) => c.name.toLowerCase() === colorName.toLowerCase()
         );
@@ -51,9 +49,8 @@ export default function ColorPage({ params }: ColorPageProps) {
           throw new Error("Color no encontrado");
         }
 
-        setColorData(selectedColor); // Guardamos el color
+        setColorData(selectedColor);
 
-        // Con el ID del color, obtenemos los servicios
         const serviciosData = await fetchServicios(selectedColor.id);
         console.log("Servicios fetched:", serviciosData);
         setServicios(serviciosData);

@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import fetchColor from "./utils/fetchColor"; // Función para obtener el color "amarillo"
-import fetchServicios from "./utils/fecthServicios"; // Función para obtener servicios
+import fetchColor from "./utils/fetchColor";
+import fetchServicios from "./utils/fecthServicios";
 import ServiceCard from "./components/ServiceCard";
 import "./globals.css";
 import RootLayout from "./layout";
@@ -20,19 +20,17 @@ interface Servicio {
 }
 
 export default function Home() {
-  const [color, setColor] = useState<Color | null>(null); // Estado para el color amarillo
-  const [servicios, setServicios] = useState<Servicio[]>([]); // Estado para los servicios
-  const [loading, setLoading] = useState<boolean>(true); // Estado de carga
+  const [color, setColor] = useState<Color | null>(null);
+  const [servicios, setServicios] = useState<Servicio[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const getColorsAndServices = async () => {
       try {
-        // Obtener el color "amarillo"
         const amarilloColor = await fetchColor("amarillo");
-        setColor(amarilloColor); // Establece el color amarillo
+        setColor(amarilloColor);
 
         if (amarilloColor) {
-          // Obtener los servicios para el color amarillo
           const serviciosData = await fetchServicios(amarilloColor.id);
           setServicios(serviciosData);
         }
@@ -43,8 +41,8 @@ export default function Home() {
       }
     };
 
-    getColorsAndServices(); // Llama a la función
-  }, []); // Solo se ejecuta al montar
+    getColorsAndServices();
+  }, []);
 
   return (
     <RootLayout>
