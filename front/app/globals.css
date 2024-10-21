@@ -1,0 +1,163 @@
+/* Reset de estilos generales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif; /* Usa la fuente que mejor represente tu prototipo */
+  background-color: #fff; /* Fondo blanco o el color que necesites */
+  color: #333; /* Color de texto principal */
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-bottom: 1rem;
+}
+
+/* Contenedor principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Sección de Texto */
+.leftText {
+  max-width: 700px;
+  text-align: left;
+  line-height: 1.8;
+  color: #262626;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+/* Estilo para el título principal */
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #262626;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Card Container (donde se alinean las tarjetas de servicios) */
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive */
+  gap: 20px;
+  width: 100%;
+}
+
+/* Estilo para las tarjetas de servicio */
+.serviceCard {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.serviceCard:hover {
+  transform: translateY(-5px); /* Movimiento al hacer hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Más sombra al hacer hover */
+}
+
+.serviceCard .title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #262626;
+  margin-bottom: 0.5rem;
+}
+
+.serviceCard .description {
+  font-size: 1rem;
+  color: #666666;
+  line-height: 1.5;
+}
+
+/* Fondo dinámico basado en el color */
+body[data-color] {
+  background-color: var(--dynamic-color);
+}
+
+/* Footer */
+footer {
+  margin-top: 2rem;
+  padding: 1rem 0;
+  text-align: center;
+  color: #666;
+  background-color: #f1f1f1;
+}
+
+/* Encabezado (header) */
+header {
+  padding: 1rem;
+  background-color: var(--dynamic-color);
+  color: white;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Contenedor de los botones en el header */
+.containerBotones {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+
+/* Botones del header */
+.containerBotones div {
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+/* Página de error personalizada (404) */
+.error-page {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.error-page img {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+/* Transición para todos los elementos */
+* {
+  transition: all 0.2s ease;
+}
+
+.page {
+  background: linear-gradient(
+    45deg,
+    /* Ángulo de la diagonal */ #f5f5dc 33%,
+    /* Color crema */ #383838 33%,
+    66%,
+    /* Color gris oscuro */ var(--dynamic-color) 66%
+      /* Color obtenido de los params */
+  );
+  min-height: 100vh;
+}
